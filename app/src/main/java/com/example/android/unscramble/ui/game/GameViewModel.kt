@@ -6,7 +6,11 @@ import androidx.lifecycle.ViewModel
 
 
 /*
-* Capa de dominio: es una capa opcional que se encuentra entra la capa de la UI y la capa de datos
+* Capa de dominio: es una capa opcional que se encuentra entra la capa de la UI y la capa de datos.
+* Es responsable de encapsular la lógica empresarial compleja o simple que uno o varios ViewModels utilizan
+* Esta capa solo se debe utilizar cuando se busca administrar la complejidad o favorecer la
+* reutilización o facilitar la expansión de la aplicación
+*
 * */
 class GameViewModel : ViewModel() {
     private var _score = 0

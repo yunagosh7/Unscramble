@@ -26,6 +26,15 @@ Getting Started
 
 1. Download and run the app.
 
+
+Apuntes 
+--------------
+
+### Capa de datos
+* La capa de datos contiene *datos de la aplicación* y *lógica empresarial*. La lógica empresarial esta compuesta por reglas empresariales que determinan como se deben crear, almacenar y cambiar los datos de una aplicación
+
+
+
 License
 -------
 
