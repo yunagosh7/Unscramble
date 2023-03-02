@@ -32,6 +32,11 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
  */
 class GameFragment : Fragment() {
 
+    // Referencia al ViewModel
+    /**
+    * Creo que la clausula by se usa para crear un objeto que implemente
+     * una interface.
+     * */
 
     private val viewModel: GameViewModel by viewModels()
 
@@ -78,6 +83,11 @@ class GameFragment : Fragment() {
     private fun onSubmitWord() {
         val playerWord = binding.textInputEditText.text.toString()
 
+        /**
+         * Envias la palabra que el usuario introdujo al ViewModel para que analice si esta bien,
+         * si esta bien, el ViewModel incrementa el score y si ya no quedan más palabras, termina
+         * el juego. Si la palabra es incorrecta lanza un error en la pantalla
+         */
         if(viewModel.isUserWordCorrect(playerWord)){
             setErrorTextField(false)
             if(viewModel.nextWord()) {
@@ -92,6 +102,7 @@ class GameFragment : Fragment() {
     }
 
     private fun onSkipWord() {
+        //
         if(viewModel.nextWord()) {
             setErrorTextField(false)
             updateNextWordOnScreen()
@@ -100,17 +111,14 @@ class GameFragment : Fragment() {
         }
     }
 
-    /*
-     * Gets a random word for the list of words and shuffles the letters in it.
-     */
-    private fun getNextScrambledWord(): String {
-        val tempWord = allWordsList.random().toCharArray()
-        tempWord.shuffle()
-        return String(tempWord)
-    }
 
     private fun showFinalScoreDialog() {
         MaterialAlertDialogBuilder(requireContext())
+                /**
+                 * Estableces los valores del Dialog y con la función getString, obtenes los textos
+                 * de los recursos almacenados en R.string, con los botones llamas a funciones para
+                 * reiniciar el juego o cerrarlo, al final. mostras el Dialog con .show()
+                */
             .setTitle(getString(R.string.congratulations))
             .setMessage(getString(R.string.you_scored, viewModel.score))
             .setCancelable(false)
@@ -123,7 +131,7 @@ class GameFragment : Fragment() {
             .show()
     }
 
-    /*
+    /**
      * Re-initializes the data in the ViewModel and updates the views with the new data, to
      * restart the game.
      */
